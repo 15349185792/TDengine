@@ -18,6 +18,7 @@
 #include <string.h>
 #include "executor.h"
 #include "osMemory.h"
+#include "query.h"
 #include "rocksdb/c.h"
 #include "streamBackendRocksdb.h"
 #include "streamInc.h"
@@ -384,6 +385,7 @@ int32_t streamStateClear(SStreamState* pState) {
 void streamStateSetNumber(SStreamState* pState, int32_t number) {
   pState->number = number;
   pState->random = (uint64_t)atomic_add_fetch_64(&seq, 1);
+  qDebug("streamStateSetNumber, seq: %" PRIi64 "", pState->random);
 }
 
 int32_t streamStateAddIfNotExist(SStreamState* pState, const SWinKey* key, void** pVal, int32_t* pVLen) {

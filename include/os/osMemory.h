@@ -42,13 +42,12 @@ extern "C" {
 #define taosMemoryRealloc realloc
 #define taosMemoryFree    free
 
-int32_t taosMemoryDbgInit();
-int32_t taosMemoryDbgInitRestore();
 // void   *taosMemoryMalloc(int64_t size);
 // void   *taosMemoryCalloc(int64_t num, int64_t size);
 // void   *taosMemoryRealloc(void *ptr, int64_t size);
-char *taosStrdup(const char *ptr);
-// void    taosMemoryFree(void *ptr);
+int32_t taosMemoryDbgInit();
+int32_t taosMemoryDbgInitRestore();
+char   *taosStrdup(const char *ptr);
 int64_t taosMemorySize(void *ptr);
 void    taosPrintBackTrace();
 void    taosMemoryTrim(int32_t size);
